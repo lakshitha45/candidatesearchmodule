@@ -35,7 +35,6 @@ public class CandidateController {
         return repository.save(candidate);
     }
 
-    // ✅ GET ALL
     @GetMapping
     public List<Candidate> getAllCandidates() {
         logger.info("Fetching all candidates");
@@ -57,7 +56,6 @@ public class CandidateController {
                 });
     }
 
-    // ✅ WHATSAPP LINK
     @GetMapping("/{id}/whatsapp")
     public ResponseEntity<String> getWhatsappLink(@PathVariable String id) {
 
@@ -120,14 +118,12 @@ public class CandidateController {
         return searchService.search(keyword, location, city, subLocality);
     }
 
-    // ✅ SUGGESTIONS
     @GetMapping("/suggestions")
     public List<String> getSuggestions(@RequestParam(required = false) String query) {
         logger.info("Fetching suggestions for query: {}", query);
         return searchService.getSuggestions(query);
     }
 
-    // ✅ UPDATE CANDIDATE
     @PutMapping("/{id}")
     public ResponseEntity<Candidate> updateCandidate(
             @PathVariable String id,
@@ -165,7 +161,6 @@ public class CandidateController {
                 });
     }
 
-    // ✅ DELETE CANDIDATE
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCandidate(@PathVariable String id) {
 
